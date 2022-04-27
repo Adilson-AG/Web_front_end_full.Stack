@@ -20,17 +20,34 @@
     </tr>
   </thead>
   <tbody>
+    <?php
+    include_once '../class/Categoria.php';
+    $cat = new Categoria();
+    $dados = $cat->Listar();
+
+    foreach ($dados as $mostrar ) {
+    
+    ?>
     <tr>
-      <th scope="row">1</th>
-      <td>Plástico</td>
+      <th scope="row"><?=$mostrar[0]?></th>
       <td>
-      	<a type ="button" class="btn btn-success" style ="color: #fff"><i class="bi bi-pencil-fill"></i></a>
-      	<a type ="button" class="btn btn-danger" data-confirm=" Excluir registro?"><i class="bi bi-trash3"></i></i></a>
+        <?=$mostrar[1]?>
+          
+        </td>
+      <td>
+        <a class="btn btn-primary" href="?p=categoria/salvar&id=<?=$mostrar[0]?>">
+
+              <i class="bi bi-pencil-fill"></i>
+            </a>
+      	
+      	<a class="btn btn-danger" style="color: #fff;" data-confirm=" Excluir registro?" href="?p=categoria/excluir&id=<?=$mostrar[0]?>"><i class="bi bi-trash3"></i></a>
       
       </td>
       
     </tr>
-   
+    <?php
+   }
+   ?>
   </tbody>
 </table>
 </div>
